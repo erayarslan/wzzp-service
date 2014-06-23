@@ -8,7 +8,9 @@ require dirname(__FILE__) . '/libs/main.php';
 
 \Slim\Slim::registerAutoloader();
 
-$app = new \Slim\Slim();
+$app = new \Slim\Slim(array(
+    'debug' => true
+));
 $main = new main();
 
 function security(\Slim\Route $route) {
