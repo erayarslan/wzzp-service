@@ -29,13 +29,23 @@ class main {
 
         if($user) {
             return $this->newToken($user->id);
-        } return false;
+        } return array(
+            constants::error => constants::not_found
+        );
     }
 
     public function checkToken($token) {
-        if($token == constants::admin_token) {
-            return constants::admin_username;
-        } return false;
+        $token = R::findOne(
+            'tokens',
+            ' token = :token ',
+            array(':token' => $token)
+        );
+
+        if($token) {
+            return $token->user_id;
+        } return array(
+            constants::error => constants::not_found
+        );
     }
 
     private function newToken($userId) {
@@ -50,7 +60,9 @@ class main {
         if($id) {
             return $generatedToken;
         } else {
-            return false;
+            return array(
+                constants::error => constants::fucked_up
+            );
         }
     }
 }
