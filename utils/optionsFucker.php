@@ -14,6 +14,6 @@ class optionsFucker extends \Slim\Middleware
     {
         $route = $this->app->router()->getCurrentRoute();
 
-        var_dump($route);
+        var_dump($route->getHttpMethods());
     }
 }
