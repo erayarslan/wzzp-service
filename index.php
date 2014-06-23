@@ -8,8 +8,8 @@ require dirname(__FILE__) . '/libs/main.php';
 
 \Slim\Slim::registerAutoloader();
 
-$app    = new \Slim\Slim();
-$main    = new main();
+$app = new \Slim\Slim();
+$main = new main();
 
 $app->get('/', function() use ($main) {
     echo json_encode($main->status());
