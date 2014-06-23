@@ -21,7 +21,12 @@ class main {
     }
 
     public function auth($username, $password) {
-        $user = R::findOne('users', ' username = :username and password = :password ', array(':username' => $username, ':password' => $password));
+        $user = R::findOne(
+            'users',
+            ' username = :username and password = :password ',
+            array(':username' => $username, ':password' => $password)
+        );
+
         if($user) {
             return constants::admin_token;
         } return false;
