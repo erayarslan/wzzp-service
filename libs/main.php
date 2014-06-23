@@ -21,10 +21,8 @@ class main {
     public function auth($username, $password) {
         if($username == constants::admin_username
         && $password == constants::admin_password) {
-
-
-
-        }
+            return true;
+        } return false;
     }
 }
 
