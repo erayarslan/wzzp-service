@@ -28,7 +28,7 @@ class main {
         );
 
         if($user) {
-            return constants::admin_token;
+            return $user;
         } return false;
     }
 
