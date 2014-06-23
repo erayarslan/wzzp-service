@@ -1,5 +1,5 @@
 <?php
-require dirname(__FILE__) . '../third-party/Slim/Middleware.php';
+require dirname(__FILE__) . '/../third-party/Slim/Middleware.php';
 
 class optionsFucker extends \Slim\Middleware
 {
