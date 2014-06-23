@@ -13,7 +13,7 @@ $main = new main();
 
 function security(\Slim\Route $route) {
     $app = \Slim\Slim::getInstance();
-    var_dump($route);
+    $app->halt(401);
 }
 
 $app->get('/', 'security', function() use ($main) {
