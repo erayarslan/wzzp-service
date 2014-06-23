@@ -26,9 +26,9 @@ class main {
             ' username = :username and password = :password ',
             array(':username' => $username, ':password' => $password)
         );
-
+        var_dump($user);
         if($user) {
-            return $user;
+            return constants::admin_token;
         } return false;
     }
 
