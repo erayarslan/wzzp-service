@@ -13,7 +13,7 @@ $main = new main();
 
 function security(\Slim\Route $route) {
     $app = \Slim\Slim::getInstance();
-    var_dump($app->request->headers);
+    var_dump($app->request->headers["accept"]);
     // $app->halt(401);
 }
 
