@@ -11,4 +11,5 @@ class constants {
 
     const admin_username    = "root";
     const admin_password    = "root";
+    const admin_token       = "xxxx";
 } 

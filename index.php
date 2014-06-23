@@ -13,12 +13,20 @@ $main = new main();
 
 function security(\Slim\Route $route) {
     $app = \Slim\Slim::getInstance();
-    var_dump($app->request->headers["accept"]);
-    // $app->halt(401);
+    $main = new main();
+    if(!$main->checkToken($app->request->headers["wzzp_token"])) {
+        $app->halt(401);
+    }
 }
 
 $app->get('/', 'security', function() use ($main,$app) {
     echo json_encode($main->status());
+});
+
+$app->get('/login', function() use ($main,$app) {
+    $username = $app->request()->params('username');
+    $password = $app->request()->params('password');
+    echo json_encode($main->auth($username,$password));
 });
 
 $app->notFound(function () use ($main,$app) {

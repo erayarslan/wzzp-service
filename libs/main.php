@@ -21,7 +21,13 @@ class main {
     public function auth($username, $password) {
         if($username == constants::admin_username
         && $password == constants::admin_password) {
-            return true;
+            return constants::admin_token;
+        } return false;
+    }
+
+    public function checkToken($token) {
+        if($token == constants::admin_token) {
+            return constants::admin_username;
         } return false;
     }
 }
