@@ -11,7 +11,12 @@ require dirname(__FILE__) . '/libs/main.php';
 $app = new \Slim\Slim();
 $main = new main();
 
-$app->get('/', function() use ($main) {
+function security(\Slim\Route $route) {
+    $app = \Slim\Slim::getInstance();
+    var_dump($route);
+}
+
+$app->get('/', 'security', function() use ($main) {
     echo json_encode($main->status());
 });
 
