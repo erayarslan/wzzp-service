@@ -5,15 +5,9 @@ class optionsFucker extends \Slim\Middleware
 {
     public function call()
     {
-        $this->app->hook('slim.before.dispatch', array($this, 'onBeforeDispatch'));
-
+        if($this->app->router()->getCurrentRoute()->getHttpMethods()[0]=="OPTIONS") {
+            $this->app->halt(200);
+        }
         $this->next->call();
-    }
-
-    public function onBeforeDispatch()
-    {
-        $route = $this->app->router()->getCurrentRoute();
-
-        var_dump($route->getHttpMethods());
     }
 }
