@@ -12,8 +12,9 @@ class optionsFucker extends \Slim\Middleware
     public function onBeforeDispatch()
     {
         $route = $this->app->router()->getCurrentRoute();
-        if($route->getHttpMethods()[0]=="OPTIONS") {
+        var_dump($route->getHttpMethods());
+        /*if($route->getHttpMethods()[0]=="OPTIONS") {
             $this->app->halt(200);
-        }
+        }*/
     }
 }
