@@ -27,10 +27,8 @@ class main {
             array(':username' => $username, ':password' => $password)
         );
 
-        $this->newToken($user->id);
-
         if($user) {
-            return constants::admin_token;
+            return $this->newToken($user->id);
         } return false;
     }
 
@@ -41,7 +39,19 @@ class main {
     }
 
     private function newToken($userId) {
-        var_dump($userId);
+        $generatedToken = md5(uniqid(rand(), true));
+
+        $token = R::dispense('tokens');
+
+        $token->user_id = $userId;
+        $token->token = $generatedToken;
+        $id = R::store($token);
+
+        if($id) {
+            return $generatedToken;
+        } else {
+            return false;
+        }
     }
 }
 
