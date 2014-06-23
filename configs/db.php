@@ -1,6 +1,6 @@
 <?php
 
-define("DB_HOST", "");
-define("DB_NAME", "");
-define("DB_USER", "");
-define("DB_PASS", "");
+define("DB_HOST", "94.73.144.187");
+define("DB_NAME", "wzzp_db");
+define("DB_USER", "wzzp_root");
+define("DB_PASS", "db123456");
