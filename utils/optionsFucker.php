@@ -7,9 +7,11 @@ class optionsFucker extends \Slim\Middleware
     {
         $route = $this->app->router()->getCurrentRoute();
         var_dump($route->getHttpMethods());
+        /*
         if($route->getHttpMethods()[0]=="OPTIONS") {
             $this->app->halt(200);
         }
+        */
         $this->next->call();
     }
 }
