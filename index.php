@@ -13,7 +13,10 @@ $main = new main();
 
 function security(\Slim\Route $route) {
     $app = \Slim\Slim::getInstance();
-    $app->halt(401);
+    $app->response->setStatus(401);
+    echo json_encode(array(
+        "error" => "uu girmemis"
+    ));
 }
 
 $app->get('/', 'security', function() use ($main) {
