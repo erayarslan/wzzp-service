@@ -26,7 +26,9 @@ class main {
             ' username = :username and password = :password ',
             array(':username' => $username, ':password' => $password)
         );
-        var_dump($user);
+
+        $this->newToken($user->id);
+
         if($user) {
             return constants::admin_token;
         } return false;
@@ -36,6 +38,10 @@ class main {
         if($token == constants::admin_token) {
             return constants::admin_username;
         } return false;
+    }
+
+    private function newToken($userId) {
+        var_dump($userId);
     }
 }
 
