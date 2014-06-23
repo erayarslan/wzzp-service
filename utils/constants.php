@@ -10,4 +10,7 @@ class constants {
 
     const version           = "version";
     const version_number    = "1.0";
+
+    const db_tokens         = "tokens";
+    const db_users          = "users";
 } 

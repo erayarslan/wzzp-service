@@ -12,6 +12,7 @@ $app = new \Slim\Slim(array(
     'debug' => true
 ));
 $main = new main();
+$app->add(new \optionsFucker());
 
 function security(\Slim\Route $route) {
     $app = \Slim\Slim::getInstance();
