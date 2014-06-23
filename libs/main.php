@@ -1,7 +1,7 @@
 <?php
 require_once dirname(__FILE__) . '/../utils/constants.php';
 require_once dirname(__FILE__) . '/../configs/db.php';
-require_once dirname(__FILE__) . '/../third-party/rb/rb.php';
+require dirname(__FILE__) . '/../third-party/rb/rb.phar';
 
 class main {
     public function __construct() {
