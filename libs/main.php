@@ -21,8 +21,8 @@ class main {
     }
 
     public function auth($username, $password) {
-        if($username == constants::admin_username
-        && $password == constants::admin_password) {
+        $user = R::findOne('users', ' username = ? , password = ? ', [ $username, $password ]);
+        if($user) {
             return constants::admin_token;
         } return false;
     }
