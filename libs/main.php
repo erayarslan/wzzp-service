@@ -17,6 +17,15 @@ class main {
             constants::version => constants::version_number
         );
     }
+
+    public function auth($username, $password) {
+        if($username == constants::admin_username
+        && $password == constants::admin_password) {
+
+
+
+        }
+    }
 }
 
 

@@ -8,4 +8,7 @@ class constants {
 
     const version           = "version";
     const version_number    = "1.0";
+
+    const admin_username    = "root";
+    const admin_password    = "root";
 } 

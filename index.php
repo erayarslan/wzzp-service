@@ -13,18 +13,15 @@ $main = new main();
 
 function security(\Slim\Route $route) {
     $app = \Slim\Slim::getInstance();
-    $app->response->setBody(json_encode(array(
-        "error" => "uu girmemis"
-    )));
     $app->halt(401);
 }
 
-$app->get('/', 'security', function() use ($main) {
+$app->get('/', 'security', function() use ($main,$app) {
     echo json_encode($main->status());
 });
 
-$app->notFound(function () use ($main) {
-    echo json_encode($main->errorNotFound());
+$app->notFound(function () use ($main,$app) {
+    $app->halt(404);
 });
 
 $app->run();
