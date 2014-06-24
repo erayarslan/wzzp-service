@@ -13,4 +13,12 @@ class constants {
 
     const db_tokens         = "tokens";
     const db_users          = "users";
+
+    const token_name        = "wzzp_token";
+
+    const bad_ass_method    = "OPTIONS";
+
+    const ok                = "OK";
+
+    const slimBeforeRouter  = "slim.before.router";
 } 

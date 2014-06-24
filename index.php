@@ -1,25 +1,26 @@
 <?php
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Headers: Content-Type, X-Requested-With');
-header('Access-Control-Allow-Methods: POST, GET, PUT, DELETE, OPTIONS');
-
 require dirname(__FILE__) . '/third-party/Slim/Slim.php';
 require dirname(__FILE__) . '/libs/main.php';
+require dirname(__FILE__) . '/utils/constants.php';
+
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, '.constants::token_name);
+header('Access-Control-Allow-Methods: POST, GET, PUT, DELETE, OPTIONS');
 
 \Slim\Slim::registerAutoloader();
 
 $app = new \Slim\Slim();
 $main = new main();
 
-$app->hook('slim.before.router', function () use ($app) {
-    if($app->request()->getMethod() == "OPTIONS") { $app->halt(203, "OK"); } // "OPTIONS" FUCKER!
+$app->hook(constants::slimBeforeRouter, function () use ($app) {
+    if($app->request()->getMethod() == constants::bad_ass_method) { $app->halt(203, constants::ok); }
 });
 
 
 function security(\Slim\Route $route) {
     $app = \Slim\Slim::getInstance();
     $main = new main();
-    if(!$main->checkToken($app->request->headers["wzzp_token"])) {
+    if(!$main->checkToken($app->request->headers[constants::token_name])) {
         $app->halt(401);
     }
 }
