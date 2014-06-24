@@ -13,7 +13,16 @@ $app = new \Slim\Slim(array(
     'debug' => true
 ));
 $main = new main();
-$app->add(new \optionsFucker());
+
+$app->hook('slim.before.dispatch', function () use ($app) {
+    $route   = $app->router()->getCurrentRoute();
+    $methods = $route->getHttpMethods();
+
+    if ($methods[0] == "OPTIONS") {
+        $app->halt(201, "OK");
+    }
+});
+
 
 function security(\Slim\Route $route) {
     $app = \Slim\Slim::getInstance();
