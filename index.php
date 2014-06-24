@@ -1,16 +1,6 @@
 <?php
 require dirname(__FILE__) . '/third-party/Slim/Slim.php';
 require dirname(__FILE__) . '/libs/main.php';
-
-if ($handle = opendir('./services')) {
-    while (false !== ($entry = readdir($handle))) {
-        if ($entry != "." && $entry != "..") {
-            include dirname(__FILE__) . '/services/'.$entry;
-        }
-    }
-    closedir($handle);
-}
-
 require_once dirname(__FILE__) . '/utils/constants.php';
 
 header('Access-Control-Allow-Origin: *');
@@ -19,9 +9,7 @@ header('Access-Control-Allow-Methods: POST, GET, PUT, DELETE, '.constants::bad_a
 
 \Slim\Slim::registerAutoloader();
 
-$app = new \Slim\Slim(array(
-    "debug" => true
-));
+$app = new \Slim\Slim();
 $app->main = new main();
 
 $app->hook(constants::slimBeforeRouter, function () use ($app) {
@@ -35,6 +23,8 @@ function security() {
     else { $app->user_id = $result[constants::info]; }
 }
 
+// Configuration End
+
 $app->get('/', function() use ($app) {
     echo json_encode($app->main->status());
 });
@@ -43,13 +33,11 @@ $app->get('/users/:user', function($user) use ($app) {
     echo json_encode(userService::getUserByUsername($user));
 });
 
-function fuckingProtected() {
-    $app = \Slim\Slim::getInstance();
+$app->get('/fuckingProtected', 'security', function() use ($app) {
     echo json_encode(array(
         "hi" => "welcome to protected path!"
     ));
-}
-$app->get('/fuckingProtected', 'security', 'fuckingProtected');
+});
 
 $app->get('/login', function() use ($app) {
     $username = $app->request()->params('username');

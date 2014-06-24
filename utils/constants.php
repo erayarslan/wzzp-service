@@ -21,4 +21,6 @@ class constants {
     const ok                = "OK";
 
     const slimBeforeRouter  = "slim.before.router";
+
+    const servicesPath       = "/services/";
 } 
