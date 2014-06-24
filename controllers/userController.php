@@ -1,5 +1,5 @@
 <?php
-require dirname(__FILE__) . '/../configs/db.php';
+include_once dirname(__FILE__) . '/../configs/db.php';
 
 class userController {
     public static function getUserByUsername($username) {

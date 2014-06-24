@@ -1,6 +1,6 @@
 <?php
 require_once dirname(__FILE__) . '/../utils/constants.php';
-require dirname(__FILE__) . '/../configs/db.php';
+include_once dirname(__FILE__) . '/../configs/db.php';
 
 
 class main {
