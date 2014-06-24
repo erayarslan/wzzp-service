@@ -15,6 +15,7 @@ class optionsFucker extends \Slim\Middleware
         $methods = $route->getHttpMethods();
         if($methods[0]=="OPTIONS") {
             $this->app->halt(200);
+            echo "HERE!";
         }
     }
 }
