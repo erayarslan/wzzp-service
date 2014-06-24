@@ -1,9 +1,9 @@
 <?php
 
 class constants {
-    const not_found         = "NOT_FOUND";
-    const bad_token         = "BAD_TOKEN";
-    const fucked_up         = "FUCKED_UP";
+    const not_found         = "not_found";
+    const bad_token         = "bad_token";
+    const fucked_up         = "fucked_up";
 
     const error             = "error";
     const info              = "info";
