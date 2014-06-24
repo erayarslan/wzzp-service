@@ -40,7 +40,7 @@ $app->get('/', function() use ($app) {
 });
 
 $app->get('/users/:user', function($user) use ($app) {
-    echo json_encode(userController::getUserByUsername($user));
+    echo json_encode(userService::getUserByUsername($user));
 });
 
 function fuckingProtected() {
