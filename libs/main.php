@@ -45,9 +45,7 @@ class main {
             return array(
                 constants::info => $token->user_id
             );
-        } return array(
-            constants::error => constants::not_found
-        );
+        } return false;
     }
 
     private function newToken($userId) {

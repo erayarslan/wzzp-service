@@ -12,9 +12,7 @@ $app = new \Slim\Slim();
 $main = new main();
 
 $app->hook('slim.before.router', function () use ($app) {
-    if ($app->request()->getMethod() == "OPTIONS") {
-        $app->halt(201, "OK");
-    }
+    if($app->request()->getMethod() == "OPTIONS") { $app->halt(203, "OK"); } // "OPTIONS" FUCKER!
 });
 
 
