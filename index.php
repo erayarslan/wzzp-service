@@ -1,7 +1,7 @@
 <?php
 require dirname(__FILE__) . '/third-party/Slim/Slim.php';
 require dirname(__FILE__) . '/libs/main.php';
-require_once dirname(__FILE__) . '/controllers/userController.php';
+require dirname(__FILE__) . '/controllers/userController.php';
 require_once dirname(__FILE__) . '/utils/constants.php';
 
 header('Access-Control-Allow-Origin: *');
@@ -31,7 +31,7 @@ $app->get('/', function() use ($app) {
 });
 
 $app->get('/users/:user', function($user) use ($app) {
-    echo json_encode(user::getUserByUsername($user));
+    echo json_encode(userController::getUserByUsername($user));
 });
 
 function fuckingProtected() {
