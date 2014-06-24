@@ -15,7 +15,8 @@ class main {
 
     public function errorNotFound() {
         return array(
-            constants::error => constants::not_found
+            "type" => constants::error,
+            "message" => constants::not_found
         );
     }
 
@@ -35,7 +36,8 @@ class main {
         if($user) {
             return $this->newToken($user->id);
         } return array(
-            constants::error => constants::not_found
+            "type" => constants::error,
+            "message" => constants::not_found
         );
     }
 
@@ -64,7 +66,8 @@ class main {
 
         if($id) {
             return array(
-                constants::info => $generatedToken
+                "type" => "token",
+                "message" => $generatedToken
             );
         } else {
             return array(

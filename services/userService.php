@@ -12,7 +12,8 @@ class userService {
         if($user) {
             return R::exportAll($user);
         } return array(
-            constants::error => constants::not_found
+            "type" => constants::error,
+            "message" => constants::not_found
         );
     }
 }
