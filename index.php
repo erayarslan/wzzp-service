@@ -31,7 +31,7 @@ $app->get('/', function() use ($app) {
 });
 
 $app->get('/users/:user', function($user) use ($app) {
-    echo json_encode($app->main->getUserByUsername($user));
+    echo json_encode($user::getUserByUsername($user));
 });
 
 function fuckingProtected() {
