@@ -12,17 +12,15 @@ header('Access-Control-Allow-Methods: POST, GET, PUT, DELETE, OPTIONS');
 $app = new \Slim\Slim();
 $main = new main();
 
-$app->hook(constants::slimBeforeRouter, function () use ($app) {
+$app->hook("slim.before.router", function () use ($app) {
     if($app->request()->getMethod() == constants::bad_ass_method) { $app->halt(203, constants::ok); }
 });
 
 
-function security(\Slim\Route $route) {
+function security() {
     $app = \Slim\Slim::getInstance();
     $main = new main();
-    if(!$main->checkToken($app->request->headers[constants::token_name])) {
-        $app->halt(401);
-    }
+    if(!$main->checkToken($app->request->headers[constants::token_name])) { $app->halt(401); }
 }
 
 $app->get('/', 'security', function() use ($main,$app) {
