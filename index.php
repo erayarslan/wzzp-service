@@ -27,7 +27,7 @@ $app->get('/', function() use ($app) {
     echo json_encode($app->main->status());
 });
 
-function fuckingProtected() use ($app) {
+function fuckingProtected($app) {
     echo json_encode(array(
         "hi" => "welcome to protected path!"
     ));
