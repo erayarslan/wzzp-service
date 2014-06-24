@@ -10,7 +10,9 @@ header('Access-Control-Allow-Methods: POST, GET, PUT, DELETE, '.constants::bad_a
 
 \Slim\Slim::registerAutoloader();
 
-$app = new \Slim\Slim();
+$app = new \Slim\Slim(array(
+    "debug" => true
+));
 $app->main = new main();
 
 $app->hook(constants::slimBeforeRouter, function () use ($app) {
