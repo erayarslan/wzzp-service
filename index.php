@@ -1,7 +1,7 @@
 <?php
 require dirname(__FILE__) . '/third-party/Slim/Slim.php';
 require dirname(__FILE__) . '/libs/main.php';
-require dirname(__FILE__) . '/controllers/userController.php';
+require_once dirname(__FILE__) . '/controllers/userController.php';
 require_once dirname(__FILE__) . '/utils/constants.php';
 
 header('Access-Control-Allow-Origin: *');
