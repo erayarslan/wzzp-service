@@ -14,7 +14,7 @@ $app = new \Slim\Slim(array(
 $main = new main();
 
 $app->hook('slim.before.router', function () use ($app) {
-    var_dump($app);
+    var_dump($app->request()->getMethod());
         /*
     if ($methods[0] == "OPTIONS") {
         $app->halt(201, "OK");
