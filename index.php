@@ -34,7 +34,9 @@ $app->get('/users/:id', 'security', function($id) use ($app) {
     if($result[0]) {
         $result = $result[0];
     }
-    echo json_encode($result);
+    echo json_encode(array(
+        "username" => $result["username"]
+    ));
 });
 
 $app->get('/fuckingProtected', 'security', function() use ($app) {
