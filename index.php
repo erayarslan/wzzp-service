@@ -10,9 +10,7 @@ header('Access-Control-Allow-Methods: POST, GET, PUT, DELETE, '.constants::bad_a
 
 \Slim\Slim::registerAutoloader();
 
-$app = new \Slim\Slim(array(
-    "debug" => true
-));
+$app = new \Slim\Slim();
 $app->main = new main();
 
 $app->hook(constants::slimBeforeRouter, function () use ($app) {
@@ -31,7 +29,8 @@ $app->get('/', function() use ($app) {
 });
 
 $app->get('/users/:user', function($user) use ($app) {
-    echo json_encode($user::getUserByUsername($user));
+    $user = new user();
+    echo json_encode($user->getUserByUsername($user));
 });
 
 function fuckingProtected() {

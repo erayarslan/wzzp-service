@@ -2,7 +2,7 @@
 require dirname(__FILE__) . '/../third-party/rb/rb-p533.php';
 
 class user {
-    public static function getUserByUsername($username) {
+    public function getUserByUsername($username) {
         $user = R::findOne(
             constants::db_users,
             ' username = :username ',
