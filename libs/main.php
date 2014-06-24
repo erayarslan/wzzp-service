@@ -1,13 +1,9 @@
 <?php
 require_once dirname(__FILE__) . '/../utils/constants.php';
-require_once dirname(__FILE__) . '/../configs/db.php';
-require dirname(__FILE__) . '/../third-party/rb/rb-p533.php';
+require dirname(__FILE__) . '/../configs/db.php';
+
 
 class main {
-    public function __construct() {
-        R::setup('mysql:host='.DB_HOST.';dbname='.DB_NAME,DB_USER,DB_PASS);
-    }
-
     public function errorNotFound() {
         return array(
             constants::error => constants::not_found
@@ -46,20 +42,6 @@ class main {
                 constants::info => $token->user_id
             );
         } return false;
-    }
-
-    public function getUserByUsername($username) {
-        $user = R::findOne(
-            constants::db_users,
-            ' username = :username ',
-            array(':username' => $username)
-        );
-
-        if($user) {
-            return R::exportAll($user);
-        } return array(
-            constants::error => constants::not_found
-        );
     }
 
     private function newToken($userId) {

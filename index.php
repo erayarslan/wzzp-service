@@ -1,6 +1,7 @@
 <?php
 require dirname(__FILE__) . '/third-party/Slim/Slim.php';
 require dirname(__FILE__) . '/libs/main.php';
+require dirname(__FILE__) . '/controllers/userController.php';
 require_once dirname(__FILE__) . '/utils/constants.php';
 
 header('Access-Control-Allow-Origin: *');
@@ -9,7 +10,9 @@ header('Access-Control-Allow-Methods: POST, GET, PUT, DELETE, '.constants::bad_a
 
 \Slim\Slim::registerAutoloader();
 
-$app = new \Slim\Slim();
+$app = new \Slim\Slim(array(
+    "debug" => true
+));
 $app->main = new main();
 
 $app->hook(constants::slimBeforeRouter, function () use ($app) {
