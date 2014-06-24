@@ -29,7 +29,7 @@ $app->get('/', function() use ($app) {
     echo json_encode($app->main->status());
 });
 
-$app->get('/users/:user', function($user) use ($app) {
+$app->get('/users/:user', 'security', function($user) use ($app) {
     echo json_encode(userService::getUserByUsername($user));
 });
 

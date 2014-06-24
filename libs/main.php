@@ -5,6 +5,7 @@ include_once dirname(__FILE__) . '/../configs/db.php';
 
 class main {
     function __construct() {
+        // service injection
         $folder = dirname(__FILE__) . "/.." . constants::servicesPath;
         if ($handle = opendir($folder)) {
             while (false !== ($entry = readdir($handle))) { if ($entry != "." && $entry != "..") { include $folder.$entry; } }
