@@ -27,6 +27,10 @@ $app->get('/', function() use ($app) {
     echo json_encode($app->main->status());
 });
 
+$app->get('/users/:user', function($user) use ($app) {
+    echo json_encode($app->main->getUserByUsername($user));
+});
+
 function fuckingProtected() {
     $app = \Slim\Slim::getInstance();
     echo json_encode(array(
