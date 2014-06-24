@@ -29,8 +29,8 @@ $app->get('/', function() use ($app) {
     echo json_encode($app->main->status());
 });
 
-$app->get('/users/:user', 'security', function($user) use ($app) {
-    echo json_encode(userService::getUserByUsername($user));
+$app->get('/users/:id', 'security', function($id) use ($app) {
+    echo json_encode(userService::getUserByUsername($id));
 });
 
 $app->get('/fuckingProtected', 'security', function() use ($app) {

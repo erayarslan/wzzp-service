@@ -2,11 +2,11 @@
 include_once dirname(__FILE__) . '/../configs/db.php';
 
 class userService {
-    public static function getUserByUsername($username) {
+    public static function getUserByUsername($userId) {
         $user = R::findOne(
             constants::db_users,
-            ' username = :username ',
-            array(':username' => $username)
+            ' id = :id ',
+            array(':id' => $userId)
         );
 
         if($user) {

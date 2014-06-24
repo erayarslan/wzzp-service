@@ -67,7 +67,8 @@ class main {
         if($id) {
             return array(
                 "type" => "token",
-                "message" => $generatedToken
+                "message" => $generatedToken,
+                "id" => $userId
             );
         } else {
             return array(
