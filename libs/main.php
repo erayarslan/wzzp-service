@@ -47,7 +47,17 @@ class main {
             ' token = :token ',
             array(':token' => $token)
         );
-        R::trash($tokenMatch);
+
+        if($tokenMatch) {
+            R::trash($tokenMatch);
+            return array(
+                "type" => constants::info,
+                "message" => "success"
+            );
+        } return array(
+            "type" => constants::error,
+            "message" => constants::bad_token
+        );
     }
 
     public function checkToken($token) {
