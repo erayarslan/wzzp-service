@@ -31,7 +31,9 @@ $app->get('/', function() use ($app) {
 
 $app->get('/users/:id', 'security', function($id) use ($app) {
     $result = userService::getUserByUsername($id);
-    var_dump($result);
+    if($result[0]) {
+        $result = $result[0];
+    }
     echo json_encode($result);
 });
 
