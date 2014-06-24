@@ -16,7 +16,6 @@ $app->hook(constants::slimBeforeRouter, function () use ($app) {
     if($app->request()->getMethod() == constants::bad_ass_method) { $app->halt(203, constants::ok); }
 });
 
-
 function security() {
     $app = \Slim\Slim::getInstance();
     $result = $app->main->checkToken($app->request->headers[constants::token_name]);
@@ -24,9 +23,16 @@ function security() {
     else { $app->user_id = $result[constants::info]; }
 }
 
-$app->get('/', 'security', function() use ($app) {
+$app->get('/', function() use ($app) {
     echo json_encode($app->main->status());
 });
+
+function fuckingProtected() use ($app) {
+    echo json_encode(array(
+        "hi" => "welcome to protected path!"
+    ));
+}
+$app->get('/fuckingProtected', 'security', 'fuckingProtected');
 
 $app->get('/login', function() use ($app) {
     $username = $app->request()->params('username');
