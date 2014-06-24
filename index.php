@@ -19,11 +19,14 @@ $app->hook(constants::slimBeforeRouter, function () use ($app) {
 
 function security() {
     $app = \Slim\Slim::getInstance();
-    if(!$app->main->checkToken($app->request->headers[constants::token_name])) { $app->halt(401); }
+    $result = $app->main->checkToken($app->request->headers[constants::token_name]);
+    if(!$result) { $app->halt(401); }
+    else { $app->user_id = $result[constants::info]; }
 }
 
 $app->get('/', 'security', function() use ($app) {
     echo json_encode($app->main->status());
+    echo json_encode($app->user_id);
 });
 
 $app->get('/login', function() use ($app) {
