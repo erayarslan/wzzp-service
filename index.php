@@ -26,7 +26,6 @@ function security() {
 
 $app->get('/', 'security', function() use ($app) {
     echo json_encode($app->main->status());
-    echo json_encode($app->user_id);
 });
 
 $app->get('/login', function() use ($app) {
