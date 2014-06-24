@@ -41,16 +41,25 @@ class main {
         );
     }
 
+    public function logout($token) {
+        $tokenMatch = R::findOne(
+            constants::db_tokens,
+            ' token = :token ',
+            array(':token' => $token)
+        );
+        R::trash($tokenMatch);
+    }
+
     public function checkToken($token) {
-        $token = R::findOne(
+        $tokenMatch = R::findOne(
             constants::db_tokens,
             ' token = :token ',
             array(':token' => $token)
         );
 
-        if($token) {
+        if($tokenMatch) {
             return array(
-                constants::info => $token->user_id
+                constants::info => $tokenMatch->user_id
             );
         } return false;
     }

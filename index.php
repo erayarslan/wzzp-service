@@ -29,6 +29,11 @@ $app->get('/', function() use ($app) {
     echo json_encode($app->main->status());
 });
 
+$app->get('/logout', function() use ($app) {
+    $token = $app->request()->params('token');
+    echo json_encode($app->main->logout($token));
+});
+
 $app->get('/users/:id', 'security', function($id) use ($app) {
     $result = userService::getUserByUsername($id);
     if($result[0]) {
