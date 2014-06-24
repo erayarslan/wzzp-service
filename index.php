@@ -13,7 +13,8 @@ $app = new \Slim\Slim(array(
 ));
 $main = new main();
 
-$app->hook('slim.before.dispatch', function () use ($app) {
+$app->hook('slim.before.router', function () use ($app) {
+    echo "I AM HERE";
     $route   = $app->router()->getCurrentRoute();
     $methods = $route->getHttpMethods();
 
