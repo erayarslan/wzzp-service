@@ -16,11 +16,11 @@ $main = new main();
 $app->hook('slim.before.router', function () use ($app) {
     echo "I AM HERE";
     $route   = $app->router()->getCurrentRoute();
-    $methods = $route->getHttpMethods();
-
+    var_dump($route);
+        /*
     if ($methods[0] == "OPTIONS") {
         $app->halt(201, "OK");
-    }
+    } */
 });
 
 
