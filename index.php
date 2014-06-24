@@ -1,7 +1,16 @@
 <?php
 require dirname(__FILE__) . '/third-party/Slim/Slim.php';
 require dirname(__FILE__) . '/libs/main.php';
-require dirname(__FILE__) . '/controllers/userController.php';
+
+if ($handle = opendir('./services')) {
+    while (false !== ($entry = readdir($handle))) {
+        if ($entry != "." && $entry != "..") {
+            include dirname(__FILE__) . '/services/'.$entry;
+        }
+    }
+    closedir($handle);
+}
+
 require_once dirname(__FILE__) . '/utils/constants.php';
 
 header('Access-Control-Allow-Origin: *');
