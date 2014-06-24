@@ -30,7 +30,9 @@ $app->get('/', function() use ($app) {
 });
 
 $app->get('/users/:id', 'security', function($id) use ($app) {
-    echo json_encode(userService::getUserByUsername($id));
+    $result = userService::getUserByUsername($id);
+    var_dump($result);
+    echo json_encode($result);
 });
 
 $app->get('/fuckingProtected', 'security', function() use ($app) {
