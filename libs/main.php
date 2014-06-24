@@ -5,9 +5,9 @@ include_once dirname(__FILE__) . '/../configs/db.php';
 
 class main {
     function __construct() {
-        if ($handle = opendir("./../".constants::servicesPath)) {
+        if ($handle = opendir("./..".constants::servicesPath)) {
             while (false !== ($entry = readdir($handle))) {
-                if ($entry != "." && $entry != "..") { include dirname(__FILE__) . "/../" . constants::servicesPath .$entry; }
+                if ($entry != "." && $entry != "..") { include dirname(__FILE__) . "/.." . constants::servicesPath .$entry; }
             } closedir($handle);
         }
     }
