@@ -10,7 +10,7 @@ header('Access-Control-Allow-Methods: POST, GET, PUT, DELETE, '.constants::bad_a
 \Slim\Slim::registerAutoloader();
 
 $app = new \Slim\Slim();
-$main = new main();
+$app->main = new main();
 
 $app->hook(constants::slimBeforeRouter, function () use ($app) {
     if($app->request()->getMethod() == constants::bad_ass_method) { $app->halt(203, constants::ok); }
@@ -19,21 +19,20 @@ $app->hook(constants::slimBeforeRouter, function () use ($app) {
 
 function security() {
     $app = \Slim\Slim::getInstance();
-    $main = new main();
-    if(!$main->checkToken($app->request->headers[constants::token_name])) { $app->halt(401); }
+    if(!$app->main->checkToken($app->request->headers[constants::token_name])) { $app->halt(401); }
 }
 
-$app->get('/', 'security', function() use ($main,$app) {
-    echo json_encode($main->status());
+$app->get('/', 'security', function() use ($app) {
+    echo json_encode($app->main->status());
 });
 
-$app->get('/login', function() use ($main,$app) {
+$app->get('/login', function() use ($app) {
     $username = $app->request()->params('username');
     $password = $app->request()->params('password');
-    echo json_encode($main->auth($username,$password));
+    echo json_encode($app->main->auth($username,$password));
 });
 
-$app->notFound(function () use ($main,$app) {
+$app->notFound(function () use ($app) {
     $app->halt(404);
 });
 
